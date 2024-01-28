@@ -2,7 +2,7 @@
 
 Automate the installation of essential infrastructure tools on Ubuntu 20.04. Simplify the setup process for security professionals. providing a streamlined deployment of a curated toolkit. 
 
-![image](https://github.com/mrrobot1o1/InfraSecInstaller/assets/66872759/53af2c76-a140-4b00-b1ed-deae0efbbbfb)
+![image](https://github.com/mrrobot1o1/InfraSecInstaller/assets/66872759/36f42338-25ea-415f-af66-7403b415a289)
 
 
 ## Usage
