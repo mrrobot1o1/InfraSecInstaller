@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## Created by @mrrobot1o1
+
 TOOLS_DIR="$HOME/tools"
 
 # Create tools directory if it doesn't exist
@@ -40,15 +42,18 @@ read -p $'\e[93mHit Enter to install all tools or enter the numbers of the tools
 
 if ! command -v go &> /dev/null; then
     echo -e "\e[93m[-] Installing Go...\e[0m"
-    sudo apt-get install -y golang
+    wget https://go.dev/dl/go1.21.6.linux-amd64.tar.gz
+    rm -rf /usr/local/go && tar -C /usr/local -xzf go1.21.6.linux-amd64.tar.gz
     export PATH=$PATH:/usr/local/go/bin
     echo -e "Go installed successfully."
     # Add Go binary directory to PATH in ~/.bashrc
     echo -e 'export PATH=$PATH:~/go/bin' >> ~/.bashrc
+    export GO111MODULE=on
     source ~/.bashrc
 fi
 if ! command -v pip3 &>/dev/null; then
         echo -e "\e[93m[-] Installing pip3...\e[0m"
+        apt install python3.8-venv
         wget https://bootstrap.pypa.io/get-pip.py
         python3 get-pip.py
         rm get-pip.py
@@ -58,6 +63,7 @@ if ! command -v pipx &>/dev/null; then
         echo -e "\e[93m[-] Installing pipx...\e[0m"
         python3 -m pip install --user pipx
         python3 -m pipx ensurepath
+        source ~/.bashrc
         echo -e "\e[92m[+] pip3 installed successfully.\e[0m"
 fi
 
@@ -93,11 +99,7 @@ for tool_number in {1..23}; do
                 echo -e "\e[92m[+] metasploit installed successfully.\e[0m";;
             6 )
                 echo -e "\e[93m[-] Installing dnsrecon...\e[0m"
-                git clone https://github.com/darkoperator/dnsrecon.git
-                cd dnsrecon
-                pip3 install -r requirements.txt
-                python3 setup.py install
-                cd "$TOOLS_DIR"
+                sudo apt install dnsrecon -y
                 echo -e "\e[92m[+] dnsrecon installed successfully.\e[0m";;
             7 )
                 echo -e "\e[93m[-] Installing pipx...\e[0m"
@@ -144,7 +146,10 @@ for tool_number in {1..23}; do
                 echo -e "\e[92m[+] smbmap.py installed successfully.\e[0m";;
             16 )
                 echo -e "\e[93m[-] Installing crackmapexec...\e[0m"
-                pipx install crackmapexec
+                git clone https://github.com/byt3bl33d3r/CrackMapExec
+                cd CrackMapExec && git submodule init && git submodule update --recursive
+                pipx install .
+                cd $TOOLS_DIR
                 echo -e "\e[92m[+] crackmapexec installed successfully.\e[0m";;
             17 )
                 echo -e "\e[93m[-] Installing snmpwalk...\e[0m"
@@ -177,5 +182,6 @@ for tool_number in {1..23}; do
     fi
 done
 
+source ~/.bashrc
 echo -e "\e[92mTool installation completed successfully.\e[0m"
 echo -e "\e[94mHappy hacking :)\e[0m"
