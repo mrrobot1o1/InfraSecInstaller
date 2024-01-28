@@ -17,7 +17,7 @@ Automate the installation of essential infrastructure tools on Ubuntu 20.04. Sim
 1. Clone the repository:
 
     ```bash
-     root@root:~# https://github.com/mrrobot1o1/InfraSecInstaller
+     root@root:~# git clone https://github.com/mrrobot1o1/InfraSecInstaller
     ```
 
 2. Navigate to the tool directory:
