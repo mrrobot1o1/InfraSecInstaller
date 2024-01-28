@@ -27,7 +27,7 @@ tool_list() {
     echo -e "\e[96m  4. ffuf\e[0m           \e[96m 14. smbclient"
     echo -e "\e[96m  5. metasploit\e[0m     \e[96m 15. smbmap.py"
     echo -e "\e[96m  6. dnsrecon\e[0m       \e[96m 16. crackmapexec"
-    echo -e "\e[96m  7. pipx\e[0m           \e[96m 17. snmpwalk"
+    echo -e "\e[96m  7. sqlmap\e[0m           \e[96m 17. snmpwalk"
     echo -e "\e[96m  8. impacket\e[0m       \e[96m 18. ldapsearch"
     echo -e "\e[96m  9. Responder\e[0m      \e[96m 19. testssl.sh"
     echo -e "\e[96m 10. rpcclient\e[0m       \e[96m 20. ike-scan"
@@ -53,7 +53,7 @@ if ! command -v go &> /dev/null; then
 fi
 if ! command -v pip3 &>/dev/null; then
         echo -e "\e[93m[-] Installing pip3...\e[0m"
-        apt install python3.8-venv
+        apt install python3.8-venv -y
         wget https://bootstrap.pypa.io/get-pip.py
         python3 get-pip.py
         rm get-pip.py
@@ -102,7 +102,7 @@ for tool_number in {1..23}; do
                 sudo apt install dnsrecon -y
                 echo -e "\e[92m[+] dnsrecon installed successfully.\e[0m";;
             7 )
-                echo -e "\e[93m[-] Installing pipx...\e[0m"
+                echo -e "\e[93m[-] Installing sqlmap...\e[0m"
                 sudo apt-get install -y python3-pip
                 pip3 install --user pipx
                 export PATH=$PATH:~/.local/bin
@@ -142,7 +142,9 @@ for tool_number in {1..23}; do
                 echo -e "\e[92m[+] smbclient installed successfully.\e[0m";;
             15 )
                 echo -e "\e[93m[-] Installing smbmap.py...\e[0m"
-                sudo apt-get install -y smbmap
+                git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev
+                cd sqlmap && ln -s $HOME/tools/sqlmap/sqlmap.py /usr/local/bin/sqlmap.py
+                cd $TOOLS_DIR
                 echo -e "\e[92m[+] smbmap.py installed successfully.\e[0m";;
             16 )
                 echo -e "\e[93m[-] Installing crackmapexec...\e[0m"
