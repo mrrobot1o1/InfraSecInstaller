@@ -23,7 +23,7 @@ Automate the installation of essential infrastructure tools on Ubuntu 20.04. Sim
 2. Navigate to the tool directory:
 
     ```bash
-    root@root:~# cd InfraToolInstaller
+    root@root:~# cd InfraSecInstaller
     ```
 3. Excutable permission
     ```bash
