@@ -1,6 +1,9 @@
-# InfraToolInstaller
+# InfraSecInstaller
 
 Automate the installation of essential infrastructure tools on Ubuntu 20.04. Simplify the setup process for security professionals. providing a streamlined deployment of a curated toolkit. 
+
+![image](https://github.com/mrrobot1o1/InfraSecInstaller/assets/66872759/53af2c76-a140-4b00-b1ed-deae0efbbbfb)
+
 
 ## Usage
 
@@ -22,8 +25,11 @@ Automate the installation of essential infrastructure tools on Ubuntu 20.04. Sim
     ```bash
     root@root:~# cd InfraToolInstaller
     ```
-
-3. Run the installer script:
+3. Excutable permission
+    ```bash
+    root@root:~# chmod +x install.sh
+    ```
+4. Run the installer script:
 
     ```bash
     root@root:~# ./install.sh
